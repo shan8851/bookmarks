@@ -66,23 +66,14 @@ export const addBookmark = async (bookmarkData, callback) => {
   callback();
 };
 
-export const fetchAllBookmarksFromFirebase = () => {
+export const removeBookmark = async (bookmarkData, callback) => {
   const email = firebase.auth().currentUser.email;
-  firestore
-    .doc(`users/${email}`)
-    .get()
-    .then((doc) => {
-      if (doc.exists) {
-        //console.log("Document data:", doc.data().bookmarks);
-        return doc.data();
-      } else {
-        // doc.data() will be undefined in this case
-        console.log("No such document!");
-      }
-    })
-    .catch(function (error) {
-      console.log("Error getting document:", error);
-    });
+  const userDocument = await firestore.doc(`users/${email}`);
+  userDocument.update({
+    bookmarks: firebase.firestore.FieldValue.arrayRemove(bookmarkData),
+  });
+
+  callback();
 };
 
 export default fire;
