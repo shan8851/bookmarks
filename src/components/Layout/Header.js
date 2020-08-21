@@ -3,10 +3,12 @@ import styled from "styled-components";
 import { UserContext } from "../../providers/UserProvider";
 import { auth } from "../../firebase/fire";
 import { Link, useNavigate } from "@reach/router";
+import { FaPlus } from "react-icons/fa";
 
 export default function Header() {
   const user = useContext(UserContext);
   const [showSignOut, setShowSignOut] = useState(false);
+  const [showAdd, setShowAdd] = useState(false);
   const navigate = useNavigate();
   return (
     <Nav>
@@ -16,6 +18,14 @@ export default function Header() {
 
       {user && (
         <ImageContainer>
+          {showAdd && <div style={{ color: "white" }}>Add Bookmark</div>}
+          <FaPlus
+            style={{ cursor: "pointer" }}
+            onMouseOver={() => setShowAdd(true)}
+            onMouseOut={() => setShowAdd(false)}
+            color="white"
+            size={30}
+          />
           {showSignOut && <div style={{ color: "white" }}>Sign Out</div>}
           <Image
             onClick={() => {
@@ -23,7 +33,10 @@ export default function Header() {
             }}
             onMouseOver={() => setShowSignOut(true)}
             onMouseOut={() => setShowSignOut(false)}
-            src={user.photoURL}
+            src={
+              user.photoURL ||
+              "https://res.cloudinary.com/dqcsk8rsc/image/upload/v1577268053/avatar-1-bitmoji_upgwhc.png"
+            }
             alt="profile-pic"
           />
         </ImageContainer>
@@ -61,7 +74,7 @@ const Image = styled.img`
   width: 90px;
   border: 1px solid black;
   border-radius: 50%;
-  margin-left: 5px;
+  margin: 5px 10px;
   cursor: pointer;
   @media (max-width: 600px) {
     height: 60px;

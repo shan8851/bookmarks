@@ -2,7 +2,6 @@ import React, { useContext, useState, useEffect } from "react";
 import { Router } from "@reach/router";
 import LogIn from "./Auth/Login";
 import SignUp from "./Auth/SignUp";
-import Main from "./Main";
 import PasswordReset from "./Auth/PasswordReset";
 import AddBookmark from "./bookmarks/AddBookmark";
 import Bookmarks from "./bookmarks/Bookmark";
@@ -22,9 +21,8 @@ function App() {
 
   return user ? (
     <Router>
-      <Main path="/" />
-      <AddBookmark path="addBookmark" />
-      <Bookmarks path="bookmarks" />
+      <AddBookmark path="/add-bookmark" />
+      <Bookmarks path="/" />
     </Router>
   ) : (
     <Router>
