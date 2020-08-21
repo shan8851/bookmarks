@@ -1,6 +1,15 @@
 import React, { useState } from "react";
 import { Link } from "@reach/router";
-import styled from "styled-components";
+import {
+  Wrapper,
+  Heading,
+  Container,
+  Error,
+  StyledInput,
+  StyledForm,
+  SignInButton,
+  GoogleSignInButton,
+} from "./AuthStyles";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -25,40 +34,34 @@ export default function Login() {
       <Container>
         <Heading>Sign In</Heading>
         {error !== null && <Error>{error}</Error>}
-        <form className="">
-          <label htmlFor="userEmail" className="block">
-            Email:
-          </label>
+        <StyledForm className="">
           <StyledInput
             type="email"
             name="userEmail"
             value={email}
-            placeholder="E.g: faruq123@gmail.com"
+            placeholder="Email"
             id="userEmail"
             onChange={(event) => onChangeHandler(event)}
           />
-          <label htmlFor="userPassword" className="block">
-            Password:
-          </label>
           <StyledInput
             type="password"
             name="userPassword"
             value={password}
-            placeholder="Your Password"
+            placeholder="Password"
             id="userPassword"
             onChange={(event) => onChangeHandler(event)}
           />
-          <button
+          <SignInButton
             onClick={(event) => {
               signInWithEmailAndPasswordHandler(event, email, password);
             }}
           >
             Sign in
-          </button>
-        </form>
+          </SignInButton>
+        </StyledForm>
         <p>or</p>
-        <button>Sign in with Google</button>
-        <p className="text-center my-3">
+        <GoogleSignInButton>Sign in with Google</GoogleSignInButton>
+        <p>
           Don't have an account? <Link to="signUp">Sign up here</Link> <br />{" "}
           <Link to="passwordReset">Forgot Password?</Link>
         </p>
@@ -66,38 +69,3 @@ export default function Login() {
     </Wrapper>
   );
 }
-
-const Wrapper = styled.div`
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: beige;
-`;
-
-const Heading = styled.div`
-  font-size: 3rem;
-  margin-bottom: 2px;
-  text-align: center;
-  font-weight: bold;
-`;
-
-const Container = styled.div`
-  background-color: white;
-  border-radius: 16px;
-  padding: 12px;
-`;
-
-const Error = styled.div`
-  padding: 4px 0;
-  background-color: red;
-  color: white;
-  width: 100%;
-  text-align: center;
-  margin-bottom: 3px;
-`;
-
-const StyledInput = styled.input`
-  padding: 5px;
-`;
