@@ -10,6 +10,7 @@ import {
   AuthButton,
   GoogleAuthButton,
 } from "./AuthStyles";
+import { signInWithGoogle, auth } from "../../firebase/fire";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -17,6 +18,10 @@ export default function Login() {
   const [error, setError] = useState(null);
   const signInWithEmailAndPasswordHandler = (event, email, password) => {
     event.preventDefault();
+    auth.signInWithEmailAndPassword(email, password).catch((error) => {
+      setError("Error signing in with password and email!");
+      console.error("Error signing in with password and email", error);
+    });
   };
 
   const onChangeHandler = (event) => {
@@ -60,7 +65,9 @@ export default function Login() {
           </AuthButton>
         </StyledForm>
         <p>or</p>
-        <GoogleAuthButton>Sign in with Google</GoogleAuthButton>
+        <GoogleAuthButton onClick={signInWithGoogle}>
+          Sign in with Google
+        </GoogleAuthButton>
         <p>
           Don't have an account? <Link to="signUp">Sign up here</Link> <br />{" "}
           <Link to="passwordReset">Forgot Password?</Link>
