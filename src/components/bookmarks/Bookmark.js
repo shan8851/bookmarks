@@ -4,7 +4,8 @@ import { firestore } from "../../firebase/fire";
 import { UserContext } from "../../providers/UserProvider";
 import Spinner from "../loading/Spinner";
 import styled from "styled-components";
-import { FaTags, FaTimesCircle } from "react-icons/fa";
+import { FaTags, FaTimesCircle, FaPlus } from "react-icons/fa";
+import { Link } from "@reach/router";
 
 export default function Bookmark() {
   const user = useContext(UserContext);
@@ -88,6 +89,21 @@ export default function Bookmark() {
           </Card>
         ))}
       </Container>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <AddButton>
+          <Link
+            style={{ color: "white", textDecoration: "none" }}
+            to="add-bookmark"
+          >
+            Add new bookmark
+          </Link>
+        </AddButton>
+      </div>
     </Layout>
   );
 }
@@ -153,6 +169,18 @@ const BookmarkName = styled.a`
   font-size: 2rem;
   cursor: pointer;
   text-decoration: none;
+`;
+
+const AddButton = styled.button`
+  background-color: black;
+  color: white;
+  font-size: 1.5rem;
+  font-family: "Montserrat";
+  font-weight: 900;
+  padding: 20px;
+  border: none;
+  margin-top: 20px;
+  cursor: pointer;
 `;
 
 const BookmarkCategory = styled.p``;

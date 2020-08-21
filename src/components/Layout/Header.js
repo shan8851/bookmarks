@@ -8,7 +8,6 @@ import { FaPlus } from "react-icons/fa";
 export default function Header() {
   const user = useContext(UserContext);
   const [showSignOut, setShowSignOut] = useState(false);
-  const [showAdd, setShowAdd] = useState(false);
   const navigate = useNavigate();
   return (
     <Nav>
@@ -18,14 +17,6 @@ export default function Header() {
 
       {user && (
         <ImageContainer>
-          {showAdd && <div style={{ color: "white" }}>Add Bookmark</div>}
-          <FaPlus
-            style={{ cursor: "pointer" }}
-            onMouseOver={() => setShowAdd(true)}
-            onMouseOut={() => setShowAdd(false)}
-            color="white"
-            size={30}
-          />
           {showSignOut && <div style={{ color: "white" }}>Sign Out</div>}
           <Image
             onClick={() => {

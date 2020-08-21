@@ -59,7 +59,7 @@ export default function AddBookmark() {
           <AddButton
             onClick={() => addBookmark(bookmarkData, () => resetForm())}
           >
-            Add Bookmark
+            Submit
           </AddButton>
         </Card>
       </Container>
@@ -82,11 +82,12 @@ const Card = styled.div`
   width: 80vw;
 `;
 
-const Question = styled.h3`
+const Question = styled.p`
   font-size: 1.5rem;
   letter-spacing: 3px;
   font-family: "Montserrat";
   font-weight: 500;
+  text-align: center;
 `;
 
 const Input = styled.input`
@@ -103,12 +104,13 @@ const Input = styled.input`
 const AddButton = styled.button`
   background-color: black;
   color: white;
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   font-family: "Montserrat";
   font-weight: 900;
   padding: 20px;
   border: none;
   margin-top: 20px;
+  cursor: pointer;
 `;
 
 const Success = styled.div`

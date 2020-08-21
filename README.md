@@ -12,6 +12,11 @@ Simple React application for keeping track of bookmarks. Authentication is provi
 - Delete bookmarks
 - Dynamic search for bookmarks
 
+### Still to come
+
+- Add more depth and complexity to the search function (search by category, description etc)
+- Ability to pin some bookmarks to top of the hme page
+
 ### Screenshots
 
 ![main screen](./src/images/mainScreen.png)
