@@ -7,8 +7,8 @@ import {
   Error,
   StyledInput,
   StyledForm,
-  SignInButton,
-  GoogleSignInButton,
+  AuthButton,
+  GoogleAuthButton,
 } from "./AuthStyles";
 
 export default function SignUp() {
@@ -36,12 +36,8 @@ export default function SignUp() {
     <Wrapper>
       <Container>
         <Heading>Sign Up</Heading>
-        {error !== null && (
-          <Error className="py-4 bg-red-600 w-full text-white text-center mb-3">
-            {error}
-          </Error>
-        )}
-        <StyledForm className="">
+        {error !== null && <Error>{error}</Error>}
+        <StyledForm>
           <StyledInput
             type="text"
             name="displayName"
@@ -66,24 +62,18 @@ export default function SignUp() {
             id="userPassword"
             onChange={(event) => onChangeHandler(event)}
           />
-          <SignInButton
-            className="bg-green-400 hover:bg-green-500 w-full py-2 text-white"
+          <AuthButton
             onClick={(event) => {
               createUserWithEmailAndPasswordHandler(event, email, password);
             }}
           >
             Sign up
-          </SignInButton>
+          </AuthButton>
         </StyledForm>
-        <p className="text-center my-3">or</p>
-        <GoogleSignInButton className="bg-red-500 hover:bg-red-600 w-full py-2 text-white">
-          Sign In with Google
-        </GoogleSignInButton>
-        <p className="text-center my-3">
-          Already have an account?{" "}
-          <Link to="/" className="text-blue-500 hover:text-blue-600">
-            Sign in here
-          </Link>
+        <p>or</p>
+        <GoogleAuthButton>Sign In with Google</GoogleAuthButton>
+        <p>
+          Already have an account? <Link to="/">Sign in here</Link>
         </p>
       </Container>
     </Wrapper>

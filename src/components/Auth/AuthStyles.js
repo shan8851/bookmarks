@@ -35,6 +35,15 @@ export const Error = styled.div`
   margin-bottom: 3px;
 `;
 
+export const ConfirmationBox = styled.div`
+  padding: 4px 0;
+  background-color: green;
+  color: white;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 3px;
+`;
+
 export const StyledInput = styled.input`
   padding: 5px;
   margin: 10px 0;
@@ -47,7 +56,7 @@ export const StyledForm = styled.form`
   width: 100%;
 `;
 
-export const SignInButton = styled.button`
+export const AuthButton = styled.button`
   width: 100%;
   color: white;
   background-color: green;
@@ -55,7 +64,7 @@ export const SignInButton = styled.button`
   border: none;
 `;
 
-export const GoogleSignInButton = styled.button`
+export const GoogleAuthButton = styled.button`
   width: 100%;
   color: white;
   background-color: red;

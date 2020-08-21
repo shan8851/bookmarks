@@ -7,8 +7,8 @@ import {
   Error,
   StyledInput,
   StyledForm,
-  SignInButton,
-  GoogleSignInButton,
+  AuthButton,
+  GoogleAuthButton,
 } from "./AuthStyles";
 
 export default function Login() {
@@ -34,7 +34,7 @@ export default function Login() {
       <Container>
         <Heading>Sign In</Heading>
         {error !== null && <Error>{error}</Error>}
-        <StyledForm className="">
+        <StyledForm>
           <StyledInput
             type="email"
             name="userEmail"
@@ -51,16 +51,16 @@ export default function Login() {
             id="userPassword"
             onChange={(event) => onChangeHandler(event)}
           />
-          <SignInButton
+          <AuthButton
             onClick={(event) => {
               signInWithEmailAndPasswordHandler(event, email, password);
             }}
           >
             Sign in
-          </SignInButton>
+          </AuthButton>
         </StyledForm>
         <p>or</p>
-        <GoogleSignInButton>Sign in with Google</GoogleSignInButton>
+        <GoogleAuthButton>Sign in with Google</GoogleAuthButton>
         <p>
           Don't have an account? <Link to="signUp">Sign up here</Link> <br />{" "}
           <Link to="passwordReset">Forgot Password?</Link>
