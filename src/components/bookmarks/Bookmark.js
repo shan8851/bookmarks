@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import Layout from "../Layout/Layout";
-import { firestore } from "../../firebase/fire";
+import { firestore, removeBookmark } from "../../firebase/fire";
 import { UserContext } from "../../providers/UserProvider";
 import Spinner from "../loading/Spinner";
 import styled from "styled-components";
@@ -12,6 +12,7 @@ export default function Bookmark() {
   const [data, setData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [bookmarkRemoved, setBookmarkRemoved] = useState(false);
 
   const fetchAllBookmarksFromFirebase = async () => {
     firestore
@@ -31,9 +32,25 @@ export default function Bookmark() {
       });
   };
 
-  useEffect(() => {
-    fetchAllBookmarksFromFirebase();
-  }, []);
+  const removeBookmark = (bookmarkName) => {
+    // Make a copy of bookmarks
+    const currentBookmarks = data;
+    // filter the bookmark array
+    const newBookmarks = currentBookmarks.filter(
+      (bookmark) => bookmark.name !== bookmarkName
+    );
+    // update the firestore with new bookmarks
+    var docRef = firestore.doc(`users/${user.email}`);
+    docRef.update({
+      bookmarks: newBookmarks,
+    });
+    // update my state to reload user data
+    setBookmarkRemoved(true);
+  };
+
+  // useEffect(() => {
+  //   fetchAllBookmarksFromFirebase();
+  // }, []);
 
   useEffect(() => {
     const results = data.filter((bookmark) =>
@@ -42,6 +59,11 @@ export default function Bookmark() {
     console.log("results", results);
     setSearchResults(results);
   }, [searchTerm]);
+
+  useEffect(() => {
+    fetchAllBookmarksFromFirebase();
+    setBookmarkRemoved(false);
+  }, [bookmarkRemoved]);
 
   if (loading) return <Spinner />;
   return (
@@ -66,6 +88,9 @@ export default function Bookmark() {
             </p>
             <p>{bookmark.description}</p>
             <a href={bookmark.lnk}>{bookmark.link}</a>
+            <button onClick={() => removeBookmark(bookmark.name)}>
+              delete
+            </button>
           </Card>
         ))}
       </Container>

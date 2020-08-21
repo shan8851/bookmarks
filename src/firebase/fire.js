@@ -72,7 +72,6 @@ export const removeBookmark = async (bookmarkData, callback) => {
   userDocument.update({
     bookmarks: firebase.firestore.FieldValue.arrayRemove(bookmarkData),
   });
-
   callback();
 };
 
