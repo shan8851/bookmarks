@@ -48,10 +48,6 @@ export default function Bookmark() {
     setBookmarkRemoved(true);
   };
 
-  // useEffect(() => {
-  //   fetchAllBookmarksFromFirebase();
-  // }, []);
-
   useEffect(() => {
     const results = data.filter((bookmark) =>
       bookmark.name.toLowerCase().includes(searchTerm.toLowerCase())
