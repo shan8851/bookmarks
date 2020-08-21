@@ -1,4 +1,6 @@
-import firebase from "firebase";
+import firebase from "firebase/app";
+import "firebase/auth";
+import "firebase/firestore";
 var config = {
   apiKey: "AIzaSyCDTRxj-WkENMSnCFRjlF0FWxQA09gvI0M",
   authDomain: "bookmarks-5b08e.firebaseapp.com",
@@ -10,4 +12,6 @@ var config = {
   measurementId: "G-J5NGWW9H0R",
 };
 var fire = firebase.initializeApp(config);
+export const auth = firebase.auth();
+export const firestore = firebase.firestore();
 export default fire;
