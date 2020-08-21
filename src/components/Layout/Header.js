@@ -52,6 +52,7 @@ const Logo = styled.h1`
   color: white;
   @media (max-width: 600px) {
     font-size: 1.5rem;
+    letter-spacing: 10px;
   }
 `;
 
