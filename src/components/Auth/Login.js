@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "@reach/router";
+import { Link, navigate } from "@reach/router";
 import {
   Wrapper,
   Heading,
@@ -10,7 +10,7 @@ import {
   AuthButton,
   AuthButtonText,
 } from "./AuthStyles";
-import { signInWithGoogle, auth } from "../../firebase/fire";
+import { auth } from "../../firebase/fire";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -18,10 +18,13 @@ export default function Login() {
   const [error, setError] = useState(null);
   const signInWithEmailAndPasswordHandler = (event, email, password) => {
     event.preventDefault();
-    auth.signInWithEmailAndPassword(email, password).catch((error) => {
-      setError("Error signing in with password and email!");
-      console.error("Error signing in with password and email", error);
-    });
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then(() => navigate("/"))
+      .catch((error) => {
+        setError("Error signing in with password and email!");
+        console.error("Error signing in with password and email", error);
+      });
   };
 
   const onChangeHandler = (event) => {
@@ -64,8 +67,6 @@ export default function Login() {
             Sign in
           </AuthButton>
         </StyledForm>
-        <p style={{ color: "white" }}>or</p>
-        <AuthButton onClick={signInWithGoogle}>Sign in with Google</AuthButton>
         <AuthButtonText>
           Don't have an account?{" "}
           <Link

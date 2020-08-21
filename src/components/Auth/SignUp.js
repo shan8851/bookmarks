@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "@reach/router";
+import { Link, navigate } from "@reach/router";
 import {
   Wrapper,
   Heading,
@@ -10,11 +10,7 @@ import {
   AuthButton,
   AuthButtonText,
 } from "./AuthStyles";
-import {
-  auth,
-  signInWithGoogle,
-  generateUserDocument,
-} from "../../firebase/fire";
+import { auth, generateUserDocument } from "../../firebase/fire";
 
 export default function SignUp() {
   const [email, setEmail] = useState("");
@@ -28,10 +24,9 @@ export default function SignUp() {
   ) => {
     event.preventDefault();
     try {
-      const { user } = await auth.createUserWithEmailAndPassword(
-        email,
-        password
-      );
+      const { user } = await auth
+        .createUserWithEmailAndPassword(email, password)
+        .then(() => navigate("/"));
       generateUserDocument(user, { displayName });
     } catch (error) {
       setError("Error Signing up with email and password");
@@ -89,8 +84,6 @@ export default function SignUp() {
             Sign up
           </AuthButton>
         </StyledForm>
-        <p style={{ color: "white" }}>or</p>
-        <AuthButton onClick={signInWithGoogle}>Sign In with Google</AuthButton>
         <AuthButtonText>
           Already have an account?{" "}
           <Link style={{ textDecoration: "underline", color: "white" }} to="/">
