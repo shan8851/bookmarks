@@ -17,7 +17,7 @@ Simple React application for keeping track of bookmarks. Authentication is provi
 - Add more depth and complexity to the search function (search by category, description etc)
 - Ability to pin some bookmarks to top of the hme page
 
-### Screenshots
+### Screen shots
 
 ![auth screen](./src/images/authScreen1.png)
 ![auth screen](./src/images/authScreen2.png)
