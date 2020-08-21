@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { UserContext } from "../../providers/UserProvider";
 import { auth } from "../../firebase/fire";
+import { Link } from "@reach/router";
 
 export default function Header() {
   const user = useContext(UserContext);
@@ -9,7 +10,10 @@ export default function Header() {
 
   return (
     <Nav>
-      <Logo>BOOKMARKS</Logo>
+      <Link style={{ textDecoration: "none", color: "black" }} to="/">
+        <Logo>BOOKMARKS</Logo>
+      </Link>
+
       {user && (
         <ImageContainer>
           {showSignOut && <div>Sign Out</div>}
