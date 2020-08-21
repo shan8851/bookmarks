@@ -93,7 +93,7 @@ export default function SignUp() {
         <AuthButton onClick={signInWithGoogle}>Sign In with Google</AuthButton>
         <AuthButtonText>
           Already have an account?{" "}
-          <Link style={{ textDecoration: "none", color: "white" }} to="/">
+          <Link style={{ textDecoration: "underline", color: "white" }} to="/">
             Sign in here
           </Link>
         </AuthButtonText>

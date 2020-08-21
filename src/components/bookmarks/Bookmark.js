@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import Layout from "../Layout/Layout";
-import { firestore, removeBookmark } from "../../firebase/fire";
+import { firestore } from "../../firebase/fire";
 import { UserContext } from "../../providers/UserProvider";
 import Spinner from "../loading/Spinner";
 import styled from "styled-components";
-import { FaTags } from "react-icons/fa";
+import { FaTags, FaTimesCircle } from "react-icons/fa";
 
 export default function Bookmark() {
   const user = useContext(UserContext);
@@ -76,17 +76,15 @@ export default function Bookmark() {
       <Container>
         {searchResults.map((bookmark, index) => (
           <Card key={index}>
-            <h3>
-              <a href={bookmark.lnk}>{bookmark.name}</a>
-            </h3>
-            <p>
+            <CardTopRow>
+              <BookmarkName href={bookmark.link}>{bookmark.name}</BookmarkName>
+              <FaTimesCircle onClick={() => removeBookmark(bookmark.name)} />
+            </CardTopRow>
+            <BookmarkCategory>
               <FaTags /> {bookmark.category}
-            </p>
-            <p>{bookmark.description}</p>
-            <a href={bookmark.lnk}>{bookmark.link}</a>
-            <button onClick={() => removeBookmark(bookmark.name)}>
-              delete
-            </button>
+            </BookmarkCategory>
+            <BookmarkDescription>{bookmark.description}</BookmarkDescription>
+            <BookmarkLink href={bookmark.link}>{bookmark.link}</BookmarkLink>
           </Card>
         ))}
       </Container>
@@ -96,11 +94,10 @@ export default function Bookmark() {
 
 const Container = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
   width: 90vw;
   flex-wrap: wrap;
   margin: auto;
+  justify-content: center;
 `;
 
 const Heading = styled.h1`
@@ -126,14 +123,42 @@ const SearchInput = styled.input`
   background-color: black;
   color: white;
   width: 60vw;
+  @media (max-width: 750px) {
+    width: 90vw;
+  }
 `;
 
 const Card = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 0 20px;
-  width: 30%;
-  -webkit-box-shadow: 10px 10px 5px -6px rgba(0, 0, 0, 0.17);
-  -moz-box-shadow: 10px 10px 5px -6px rgba(0, 0, 0, 0.17);
-  box-shadow: 10px 10px 5px -6px rgba(0, 0, 0, 0.17);
+  padding: 20px;
+  background-color: #e0e0e0;
+  width: 350px;
+  margin: 15px;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+`;
+
+const CardTopRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const BookmarkName = styled.a`
+  font-family: "Montserrat";
+  font-weight: 900;
+  color: black;
+  font-size: 2rem;
+  cursor: pointer;
+  text-decoration: none;
+`;
+
+const BookmarkCategory = styled.p``;
+
+const BookmarkDescription = styled.p``;
+
+const BookmarkLink = styled.a`
+  cursor: pointer;
 `;

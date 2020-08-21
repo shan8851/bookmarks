@@ -83,7 +83,7 @@ const Card = styled.div`
 `;
 
 const Question = styled.h3`
-  font-size: 2rem;
+  font-size: 1.5rem;
   letter-spacing: 3px;
   font-family: "Montserrat";
   font-weight: 500;
@@ -96,7 +96,7 @@ const Input = styled.input`
   background: transparent;
   border-bottom: 2px solid black;
   font-size: 1.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   text-align: center;
 `;
 

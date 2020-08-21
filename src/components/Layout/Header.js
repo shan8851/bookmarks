@@ -39,6 +39,9 @@ const Nav = styled.nav`
   align-items: center;
   padding: 0 20px;
   background-color: black;
+  @media (max-width: 600px) {
+    height: 100px;
+  }
 `;
 
 const Logo = styled.h1`
@@ -47,6 +50,9 @@ const Logo = styled.h1`
   font-weight: 900;
   letter-spacing: 20px;
   color: white;
+  @media (max-width: 600px) {
+    font-size: 1.5rem;
+  }
 `;
 
 const Image = styled.img`
@@ -56,6 +62,10 @@ const Image = styled.img`
   border-radius: 50%;
   margin-left: 5px;
   cursor: pointer;
+  @media (max-width: 600px) {
+    height: 60px;
+    width: 60px;
+  }
 `;
 
 const ImageContainer = styled.div`

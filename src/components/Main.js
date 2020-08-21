@@ -25,25 +25,12 @@ export default function Main() {
         </div>
         <p>
           Hi {displayName} welcome to your bookmarks homepage, you can add new
-          bookmarks <Link to="addBookmark">here</Link> or head
+          bookmarks <Link to="addBookmark">here</Link> or head over
           <Link to="bookmarks">here</Link> to view your existing bookmarks.
           Below are some stats about your bookmarks.
         </p>
         <InfoRow>
-          <h2>Total Bookmarks:</h2>
-          <p>Some number</p>
-        </InfoRow>
-        <InfoRow>
-          <h2>Number of categories:</h2>
-          <p>Some number</p>
-        </InfoRow>
-        <InfoRow>
-          <h2>Most Popular category:</h2>
-          <p>Some category</p>
-        </InfoRow>
-        <InfoRow>
-          <h2>Most recent bookmark:</h2>
-          <p>Some link</p>
+          Coming soon - more detailed statistics about bookmarks
         </InfoRow>
       </Container>
     </Layout>
