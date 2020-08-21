@@ -4,7 +4,7 @@ import { firestore } from "../../firebase/fire";
 import { UserContext } from "../../providers/UserProvider";
 import Spinner from "../loading/Spinner";
 import styled from "styled-components";
-import { FaTags, FaTimesCircle, FaPlus } from "react-icons/fa";
+import { FaTags, FaTimesCircle } from "react-icons/fa";
 import { Link } from "@reach/router";
 
 export default function Bookmark() {

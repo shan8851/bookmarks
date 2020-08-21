@@ -5,12 +5,9 @@ import {
   Wrapper,
   Heading,
   Container,
-  Error,
   StyledInput,
   StyledForm,
   AuthButton,
-  GoogleAuthButton,
-  ConfirmationBox,
   AuthButtonText,
 } from "./AuthStyles";
 

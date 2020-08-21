@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { UserContext } from "../../providers/UserProvider";
 import { auth } from "../../firebase/fire";
 import { Link, useNavigate } from "@reach/router";
-import { FaPlus } from "react-icons/fa";
 
 export default function Header() {
   const user = useContext(UserContext);
