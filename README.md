@@ -4,10 +4,9 @@ Simple React application for keeping track of bookmarks. Authentication is provi
 
 ### Features
 
--Login
--Signup
--Reset Password
-
+- Login
+- Signup
+- Reset Password
 - Google Singup
 - Add Bookmarks
 - Delete bookmarks
