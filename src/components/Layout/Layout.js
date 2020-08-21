@@ -21,5 +21,5 @@ const Wrapper = styled.div`
 `;
 
 const MainContent = styled.div`
-  flex: 1;
+  flex: 2;
 `;

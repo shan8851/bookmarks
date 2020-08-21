@@ -12,11 +12,12 @@ export const Heading = styled.div`
   font-size: 3rem;
   margin-bottom: 2rem;
   text-align: center;
-  font-weight: bold;
+  font-weight: 900;
+  color: white;
 `;
 
 export const Container = styled.div`
-  background-color: #e0e0e0;
+  background-color: black;
   border-radius: 16px;
   padding: 24px 48px;
   display: flex;
@@ -26,18 +27,22 @@ export const Container = styled.div`
 `;
 
 export const Error = styled.div`
-  padding: 4px 0;
+  padding: 8px 0;
   background-color: red;
   color: white;
   width: 100%;
   text-align: center;
+  font-weight: 900;
   margin-bottom: 3px;
+  font-family: "Montserrat";
 `;
 
 export const ConfirmationBox = styled.div`
-  padding: 4px 0;
+  padding: 8px 0;
+  font-weight: 900;
   background-color: green;
   color: white;
+  font-family: "montserrat";
   width: 100%;
   text-align: center;
   margin-bottom: 3px;
@@ -45,8 +50,9 @@ export const ConfirmationBox = styled.div`
 
 export const StyledInput = styled.input`
   padding: 10px 15px;
-  margin: 10px 0;
+  margin: 20px 0;
   font-size: 1.2rem;
+  font-family: "montserrat";
   border: none;
 `;
 
@@ -58,11 +64,12 @@ export const StyledForm = styled.form`
 
 export const AuthButton = styled.button`
   width: 100%;
-  color: white;
-  background-color: green;
+  color: black;
+  background-color: white;
   padding: 10px 15px;
   border: none;
   font-weight: bold;
+  font-family: "montserrat";
   font-size: 18px;
   margin-top: 10px;
 `;
@@ -75,4 +82,10 @@ export const GoogleAuthButton = styled.button`
   border: none;
   font-weight: bold;
   font-size: 18px;
+`;
+
+export const AuthButtonText = styled.h1`
+  font-family: "montserrat";
+  font-weight: 900;
+  color: white;
 `;

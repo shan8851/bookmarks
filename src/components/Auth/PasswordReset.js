@@ -11,6 +11,7 @@ import {
   AuthButton,
   GoogleAuthButton,
   ConfirmationBox,
+  AuthButtonText,
 } from "./AuthStyles";
 
 export default function PasswordReset() {
@@ -54,7 +55,11 @@ export default function PasswordReset() {
           />
           <AuthButton onClick={sendResetEmail}>Send me a reset link</AuthButton>
         </StyledForm>
-        <Link to="/">&larr; back to sign in page</Link>
+        <AuthButtonText>
+          <Link style={{ textDecoration: "none", color: "white" }} to="/">
+            &larr; back to sign in page
+          </Link>
+        </AuthButtonText>
       </Container>
     </Wrapper>
   );

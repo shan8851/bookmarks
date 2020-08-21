@@ -8,7 +8,7 @@ import {
   StyledInput,
   StyledForm,
   AuthButton,
-  GoogleAuthButton,
+  AuthButtonText,
 } from "./AuthStyles";
 import {
   auth,
@@ -89,13 +89,14 @@ export default function SignUp() {
             Sign up
           </AuthButton>
         </StyledForm>
-        <p>or</p>
-        <GoogleAuthButton onClick={signInWithGoogle}>
-          Sign In with Google
-        </GoogleAuthButton>
-        <p>
-          Already have an account? <Link to="/">Sign in here</Link>
-        </p>
+        <p style={{ color: "white" }}>or</p>
+        <AuthButton onClick={signInWithGoogle}>Sign In with Google</AuthButton>
+        <AuthButtonText>
+          Already have an account?{" "}
+          <Link style={{ textDecoration: "none", color: "white" }} to="/">
+            Sign in here
+          </Link>
+        </AuthButtonText>
       </Container>
     </Wrapper>
   );

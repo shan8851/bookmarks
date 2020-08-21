@@ -1,6 +1,7 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
+
 var config = {
   apiKey: "AIzaSyCDTRxj-WkENMSnCFRjlF0FWxQA09gvI0M",
   authDomain: "bookmarks-5b08e.firebaseapp.com",
@@ -54,6 +55,34 @@ const getUserDocument = async (email) => {
   } catch (error) {
     console.error("Error fetching user", error);
   }
+};
+
+export const addBookmark = async (bookmarkData, callback) => {
+  const email = firebase.auth().currentUser.email;
+  const userDocument = await firestore.doc(`users/${email}`);
+  userDocument.update({
+    bookmarks: firebase.firestore.FieldValue.arrayUnion(bookmarkData),
+  });
+  callback();
+};
+
+export const fetchAllBookmarksFromFirebase = () => {
+  const email = firebase.auth().currentUser.email;
+  firestore
+    .doc(`users/${email}`)
+    .get()
+    .then((doc) => {
+      if (doc.exists) {
+        //console.log("Document data:", doc.data().bookmarks);
+        return doc.data();
+      } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+      }
+    })
+    .catch(function (error) {
+      console.log("Error getting document:", error);
+    });
 };
 
 export default fire;

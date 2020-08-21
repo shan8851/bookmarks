@@ -8,7 +8,7 @@ import {
   StyledInput,
   StyledForm,
   AuthButton,
-  GoogleAuthButton,
+  AuthButtonText,
 } from "./AuthStyles";
 import { signInWithGoogle, auth } from "../../firebase/fire";
 
@@ -64,14 +64,24 @@ export default function Login() {
             Sign in
           </AuthButton>
         </StyledForm>
-        <p>or</p>
-        <GoogleAuthButton onClick={signInWithGoogle}>
-          Sign in with Google
-        </GoogleAuthButton>
-        <p>
-          Don't have an account? <Link to="signUp">Sign up here</Link> <br />{" "}
-          <Link to="passwordReset">Forgot Password?</Link>
-        </p>
+        <p style={{ color: "white" }}>or</p>
+        <AuthButton onClick={signInWithGoogle}>Sign in with Google</AuthButton>
+        <AuthButtonText>
+          Don't have an account?{" "}
+          <Link
+            style={{ textDecoration: "underline", color: "white" }}
+            to="signUp"
+          >
+            Sign up
+          </Link>{" "}
+          <br />{" "}
+          <Link
+            style={{ textDecoration: "underline", color: "white" }}
+            to="passwordReset"
+          >
+            Forgot Password?
+          </Link>
+        </AuthButtonText>
       </Container>
     </Wrapper>
   );

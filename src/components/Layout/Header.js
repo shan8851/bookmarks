@@ -2,12 +2,12 @@ import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { UserContext } from "../../providers/UserProvider";
 import { auth } from "../../firebase/fire";
-import { Link } from "@reach/router";
+import { Link, useNavigate } from "@reach/router";
 
 export default function Header() {
   const user = useContext(UserContext);
   const [showSignOut, setShowSignOut] = useState(false);
-
+  const navigate = useNavigate();
   return (
     <Nav>
       <Link style={{ textDecoration: "none", color: "black" }} to="/">
@@ -16,10 +16,10 @@ export default function Header() {
 
       {user && (
         <ImageContainer>
-          {showSignOut && <div>Sign Out</div>}
+          {showSignOut && <div style={{ color: "white" }}>Sign Out</div>}
           <Image
             onClick={() => {
-              auth.signOut();
+              auth.signOut().then(() => navigate("/"));
             }}
             onMouseOver={() => setShowSignOut(true)}
             onMouseOut={() => setShowSignOut(false)}
@@ -38,13 +38,15 @@ const Nav = styled.nav`
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
-  background-color: #e0e0e0;
+  background-color: black;
 `;
 
 const Logo = styled.h1`
   font-size: 2rem;
-  font-weight: bold;
+  font-family: "Montserrat";
+  font-weight: 900;
   letter-spacing: 20px;
+  color: white;
 `;
 
 const Image = styled.img`
