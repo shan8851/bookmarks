@@ -1,15 +1,25 @@
 import React from "react";
 import styled from "styled-components";
+import Header from "./Header";
+import Footer from "./Footer";
 
-export default function Layout() {
+export default function Layout({ children }) {
   return (
     <Wrapper>
-      <h1>Layout component</h1>
+      <Header />
+      <MainContent>{children}</MainContent>
+      <Footer />
     </Wrapper>
   );
 }
 
 const Wrapper = styled.div`
-  height: 100vh;
-  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-width: 100vw;
+`;
+
+const MainContent = styled.div`
+  flex: 1;
 `;

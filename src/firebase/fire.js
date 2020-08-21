@@ -24,7 +24,7 @@ export const signInWithGoogle = () => {
 
 export const generateUserDocument = async (user, additionalData) => {
   if (!user) return;
-  const userRef = firestore.doc(`users/${user.uid}`);
+  const userRef = firestore.doc(`users/${user.email}`);
   const snapshot = await userRef.get();
   if (!snapshot.exists) {
     const { email, displayName, photoURL } = user;
@@ -39,16 +39,16 @@ export const generateUserDocument = async (user, additionalData) => {
       console.error("Error creating user document", error);
     }
   }
-  return getUserDocument(user.uid);
+  return getUserDocument(user.email);
 };
 
-const getUserDocument = async (uid) => {
-  if (!uid) return null;
+const getUserDocument = async (email) => {
+  if (!email) return null;
   try {
-    const userDocument = await firestore.doc(`users/${uid}`).get();
+    const userDocument = await firestore.doc(`users/${email}`).get();
 
     return {
-      uid,
+      email,
       ...userDocument.data(),
     };
   } catch (error) {

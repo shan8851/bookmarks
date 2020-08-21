@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "@reach/router";
+import { auth } from "../../firebase/fire";
 import {
   Wrapper,
   Heading,
@@ -24,6 +25,17 @@ export default function PasswordReset() {
   };
   const sendResetEmail = (event) => {
     event.preventDefault();
+    auth
+      .sendPasswordResetEmail(email)
+      .then(() => {
+        setEmailHasBeenSent(true);
+        setTimeout(() => {
+          setEmailHasBeenSent(false);
+        }, 3000);
+      })
+      .catch(() => {
+        setError("Error resetting password");
+      });
   };
   return (
     <Wrapper>
@@ -40,7 +52,7 @@ export default function PasswordReset() {
             placeholder="Input your email"
             onChange={onChangeHandler}
           />
-          <AuthButton>Send me a reset link</AuthButton>
+          <AuthButton onClick={sendResetEmail}>Send me a reset link</AuthButton>
         </StyledForm>
         <Link to="/">&larr; back to sign in page</Link>
       </Container>

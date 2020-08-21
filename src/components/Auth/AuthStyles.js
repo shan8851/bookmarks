@@ -6,7 +6,6 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: beige;
 `;
 
 export const Heading = styled.div`
@@ -17,7 +16,7 @@ export const Heading = styled.div`
 `;
 
 export const Container = styled.div`
-  background-color: white;
+  background-color: #e0e0e0;
   border-radius: 16px;
   padding: 24px 48px;
   display: flex;
@@ -45,9 +44,10 @@ export const ConfirmationBox = styled.div`
 `;
 
 export const StyledInput = styled.input`
-  padding: 5px;
+  padding: 10px 15px;
   margin: 10px 0;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
+  border: none;
 `;
 
 export const StyledForm = styled.form`
@@ -60,14 +60,19 @@ export const AuthButton = styled.button`
   width: 100%;
   color: white;
   background-color: green;
-  padding: 5px 0;
+  padding: 10px 15px;
   border: none;
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 10px;
 `;
 
 export const GoogleAuthButton = styled.button`
   width: 100%;
   color: white;
   background-color: red;
-  padding: 5px 0;
+  padding: 10px 15px;
   border: none;
+  font-weight: bold;
+  font-size: 18px;
 `;
