@@ -14,6 +14,7 @@ Simple React application for keeping track of bookmarks. Authentication is provi
 
 ### Still to come
 
+- Ability to edit/update each bookmark, currently, only add and delete are options
 - Add more depth and complexity to the search function (search by category, description etc)
 - Ability to pin some bookmarks to top of the hme page
 
