@@ -23,6 +23,7 @@ Simple React application for keeping track of bookmarks. Authentication is provi
 ![auth screen](./src/images/authScreen1.png)
 ![auth screen](./src/images/authScreen2.png)
 ![auth screen](./src/images/authScreen3.png)
+![auth success](./src/images/mainScreen.png)
 ![bookmark grid](./src/images/bookmarkGrid.png)
 ![bookmark search](./src/images/bookmarkSearch.png)
 ![add bookmark](./src/images/addBookmark.png)
