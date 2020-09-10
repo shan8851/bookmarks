@@ -2,6 +2,8 @@
 
 Simple React application for keeping track of bookmarks. Authentication is provided by firebase. App also uses firestore to store and modify data. Routing is handled by Reach Router
 
+Live demo [here](https://bookmarks.asamshan.dev)
+
 ### Features
 
 - Login
